@@ -1,3 +1,19 @@
+<?php 
+        require './config/config.php';
+        include('./includes/classes/User.php');
+        include('./includes/classes/Post.php');
+
+        if(isset($_SESSION['username'])){
+            $userLoggedIn = $_SESSION['username'];
+            $user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$userLoggedIn'");
+            $user =mysqli_fetch_array($user_details_query);
+        }
+        else {
+            header("Location: register.php");
+        }
+    ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +24,14 @@
     <title></title>
 </head>
 <body>
-    <?php 
-    require './config/config.php';
-    include('./includes/classes/User.php');
-    include('./includes/classes/Post.php');
+    <style type="text/css">
+        * {
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 
-    if(isset($_SESSION['username'])){
-        $userLoggedIn = $_SESSION['username'];
-        $user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$userLoggedIn'");
-        $user =mysqli_fetch_array($user_details_query);
-    }
-    else {
-        header("Location: register.php");
-    }
-    ?>
+  
     <script>
         function toggle(){
             let element = document.geElementById("comment_section");
@@ -58,6 +68,88 @@
         <input type="submit" name="postComment<?php echo $post_id; ?>" value="post">
     </form>
 
+    <?php 
+    $get_comments = mysqli_query($con, "SELECT * FROM comments WHERE post_id='$post_id' ORDER BY id ASC");
+    $count = mysqli_num_rows($get_comments);
+
+    if ($count != 0) {
+        while($comment = mysqli_fetch_array($get_comments)){
+            $comment_body = $comment['post_body'];
+            $posted_to = $comment['posted_to'];
+            $posted_by = $comment['posted_by'];
+            $date_added = $comment['date_added'];
+            $removed = $comment['removed'];
+
+                    $date_time_now = date("Y-m-d H:i:s");
+                    $start_date = new DateTime($date_added);
+                    $send_date = new DateTime($date_time_now);
+                    $interval = $start_date->diff($send_date);
+
+                    if($interval->y >= 1){
+                        if($interval == 1) {
+                            $time_message = $interval->y . " year ago";
+                        } else {
+                            $time_message = $interval->y . " years ago";
+                        } 
+                    }else if ($interval->m >= 1) {
+                        if($interval->d == 0){
+                            $days = " ago";
+                        }
+                        else if($interval->d == 1){
+                            $days = $interval->d . " day ago";
+                        }
+                        else {
+                            $days = $interval->d . " days ago";
+                        }
+                        if($interval->m == 1){
+                            $time_message = $interval->m . " months" . $days;
+                        }
+                    }
+                    else if($interval->d >= 1) {
+                        if($interval->d == 1){
+                            $time_message = "Yesterday";
+                        }
+                        else {
+                            $time_message = $interval->d . " days ago";
+                        }
+                    }
+                    else if ($interval->h >= 1) {
+                        if($interval->h == 1){
+                            $time_message = $interval->h . " hour ago";
+                        }
+                        else {
+                            $time_message = $interval->h . " hours ago";
+                        }
+                    }
+                    else if ($interval->i >= 1) {
+                        if($interval->i == 1){
+                            $time_message = $interval->i . " minute ago";
+                        }
+                        else {
+                            $time_message = $interval->i . " minutes ago";
+                        }
+                    }
+                    else {
+                        if($interval->s < 30) {
+                            $time_message = "Just Now";
+                        }
+                        else {
+                            $time_message = $interval->s . " minutes ago";
+                        }
+                    }
+                    $user_obj = new User($con, $posted_by);
+                    ?>
+                        <div class="comment_section">
+                            <a href="<?php echo $posted_by;?>" target="_parent"><img src="<?php echo $user_obj->getProfilePic();?>" title="<?php echo $posted_by?>" style="border-radius:50px;height:30px;"></a>
+                            <a href="<?php echo $posted_by;?>" target="_parent"><b><?php echo $user_obj->getFirstAndLastName(); ?></b></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp; <?php echo $time_message."<br>". $comment_body; ?>
+                            <hr>
+                        </div>
+                    <?php
+        }
+    }
+    ?>
+    
 
 </body>
 </html>
