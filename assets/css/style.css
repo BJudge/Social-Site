@@ -164,6 +164,7 @@ textarea:focus {
 #comment_iframe {
   max-height: 250px;
   width: 100%;
+  margin-top: 10px;
 }
 
 .comment_section {
@@ -203,4 +204,11 @@ textarea:focus {
   background-color: #ffffff;
   border: 1px solid #20aae5;
   margin-top: 3px;
+}
+
+.newsfeedPostedOptions {
+  padding: 0;
+  text-decoration: none;
+  color: #20aae5;
+  border: none;
 }

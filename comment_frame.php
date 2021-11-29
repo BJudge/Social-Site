@@ -148,6 +148,9 @@
                     <?php
         }
     }
+    else {
+        echo "<center><br><br>No Comments To Show! </center>";
+    }
     ?>
     
 

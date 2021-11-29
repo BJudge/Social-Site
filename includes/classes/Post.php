@@ -93,17 +93,24 @@ class Post {
                     ?>
                         <script>
                             function toggle<?php echo $id;?>(){
-                                let element = document.getElementById("toggleComment<?php echo $id; ?>");
+                                let target = $(event.target);
+                                if(!target.is("a")){
+                                    let element = document.getElementById("toggleComment<?php echo $id; ?>");
 
                                 if(element.style.display == "block"){
                                     element.style.display = "none";
                                 }else {
                                     element.style.display = "block";
                                 }
+                                }
+                                
                             }
                         </script>
 
                     <?php
+
+                    $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id='$id'");
+                    $comments_check_num = mysqli_num_rows($comments_check);
                     $date_time_now = date("Y-m-d H:i:s");
                     $start_date = new DateTime($date_time);
                     $send_date = new DateTime($date_time_now);
@@ -171,6 +178,11 @@ class Post {
                                 <div id='post_body'>
                                     $body 
                                     <br>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class='newsfeedPostedOptions'>
+                                Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
                             <div class='post_comment' id='toggleComment$id' style='display:none;'>
