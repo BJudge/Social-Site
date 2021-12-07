@@ -91,6 +91,13 @@ class User {
         $user_from = $this->user['username'];
         $query = mysqli_query($this->con, "INSERT INTO friend_requests VALUES(NULL, '$user_to', '$user_from')");
     }
+
+    public function getFriendArray(){
+        $username = $this->user['username'];
+        $query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE username='$username'");
+        $row = mysqli_fetch_array($query);
+        return "." . $row['friend_array'];
+    }
 }
 
 ?>

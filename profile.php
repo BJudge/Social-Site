@@ -57,14 +57,44 @@ if(isset($_POST['respond_request'])){
                                     echo "<input type='submit' name='add_friend' class='success' value= 'Add Friend'> </br>";
                                 }
                             }
-                        ?>       
+                        ?>   
+                        
                 </form>
+                <input type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#post_form" value="Post Something">
                 </div>
             </div>
+
             <div class="main_column column">
             <?php echo $username; ; ?>   
-
+                    
             </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="post_form" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Post Something!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        This will appear on the user's profile page and also their newsfeed for your friends to see
+                    </div>
+                    <form class="profile_post" method="POST" action="#">
+                            <div class="form-group">
+                                <textarea class="form-control" name="post_body"></textarea>
+                                <input type="hidden" name="user_from" value="<?php echo $userLoggedIn;?>">
+                                <input type="hidden" name="user_to" value="<?php echo $username;?>">
+                            </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" name="post_button" id="submit_profile_post">Post </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
         </div>   
+        <script src="./assets/js/assets.js"></script>
     </body>
 </html>
