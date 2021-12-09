@@ -24,6 +24,9 @@ else {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
     <script src="./assets/js/bootstrap.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/jcrop_bits.js"></script>
+    <script src="./assets/js/jquery.jcrop.js"></script>
+    <link rel="stylesheet" href="./assets/css/jquery.jcrop.css">
 </head>
 <body>
     <div class="top_bar">
