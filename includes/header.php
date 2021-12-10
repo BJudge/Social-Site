@@ -36,7 +36,7 @@ else {
         <nav>
             <a href="<?php echo $userLoggedIn; ?>"> Welcome <?php echo $user['first_name']; ?></a>
             <a href="index.php"><i class="fa fa-home "></i> Home</a>
-            <a href="#"><i class="fa fa-envelope"></i>Messages</a>
+            <a href="messages.php"><i class="fa fa-envelope"></i>Messages</a>
             <a href="#"><i class="fa fa-bell-o"></i>Notifications</a>
             <a href="request.php"><i class="fa fa-users"></i>Users</a>
             <a href="#"><i class="fa fa-cogs"></i>Settings</a>
