@@ -342,3 +342,78 @@ textarea:focus {
 .profile_info_bottom {
   margin: 10px 0 10px 7px;
 }
+
+#message_textarea {
+  width: 80%;
+  margin-right: 8px;
+  border-radius: 12px;
+  border: 1px solid #d3d3d3;
+}
+
+#message_submit {
+  height: 50px;
+  margin: 0;
+  width: 120px;
+  position: absolute;
+  border: none;
+  background-color: #20aae5;
+  color: #ffffff;
+  border-radius: 5px;
+  font-family: "Bellota-BoldItalic", sans-serif;
+  padding: 5px 15px 5px 15px;
+  margin-top: 4px;
+}
+
+.message {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: inline-block;
+  color: #ffffff;
+  font-family: "Bellota-BoldItalic", sans-serif;
+}
+
+.message#blue {
+  background-color: #3498db;
+  border-color: #2980b9;
+  float: right;
+  margin-bottom: 5px;
+}
+
+.message#green {
+  background-color: #2ecc71;
+  border-color: #27ae60;
+  float: left;
+  margin-bottom: 5px;
+}
+
+.loaded_messages {
+  height: 65%;
+  min-height: 300px;
+  max-height: 400px;
+  overflow: scroll;
+  margin-bottom: 10px;
+}
+
+.loaded_conversations {
+  max-height: 200px;
+  overflow: scroll;
+}
+
+.user_found_messages {
+  border-bottom: 1px solid #d3d3d3;
+  padding: 8px 8px 10px 8px;
+}
+
+.user_found_messages:hover {
+  background-color: #d3d3d3;
+}
+
+.user_found_messages img {
+  height: 35px;
+  float: left;
+}
+
+#grey {
+  color: #8c8c8c;
+}

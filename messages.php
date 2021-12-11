@@ -45,7 +45,7 @@
         <?php 
         if($user_to != 'new'){
             echo "<h4>You and <a href='$user_to'>" . $user_to_obj->getFirstAndLastName() . "</a><h4><hr><br>";
-            echo "<div class='load_messages'>";
+            echo "<div class='load_messages' id='scroll_messages'>";
                 echo $message_obj->getMessages($user_to);
             echo "</div>";
         } else {
@@ -60,11 +60,24 @@
                         echo "To: <input type='text'>";
                         echo "<div class='results'></div>";
                     }else{
-                        echo "<textarea name='message_body' id='message_textarea' placeholder='Write your message...'>
-                            </textarea>";
+                        echo "<textarea name='message_body' id='message_textarea' placeholder='Write your message...'></textarea>";
                         echo "<input type='submit' name='post_message' class='info' id='message_submit' value'Send'></input>";
                     }
                 ?>
             </form>
         </div>
+        <script>
+            let div = document.getElementById("scroll_messages");
+            // div.scrollTop = div.scrollHeight;
+            div.scrollIntoView();
+        </script>
     </div>
+
+    <div class="user_details column" id="conversations">
+            <h4>Conversations</h4>
+            <div class="loaded_conversations">
+                <?php echo $message_obj->getConvos(); ?>
+            </div>
+            <br>
+            <a href="messages.php?u=new">New Message</a>
+        </div>

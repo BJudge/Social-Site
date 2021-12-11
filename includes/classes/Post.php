@@ -349,7 +349,7 @@ class Post {
                             $time_message = "Just Now";
                         }
                         else {
-                            $time_message = $interval->s . " minutes ago";
+                            $time_message = $interval->s . " seconds ago";
                         }
                     }
                     $str .= "<div class='status_post' onClick='javascript:toggle$id()'> 
