@@ -16,9 +16,9 @@ $(document).ready(function () {
   });
 });
 
-function getUser(value, user) {
+function getUsers(value, user) {
   $.post(
-    "../handlers/ajax_friend_search.php",
+    "./includes/handlers/ajax_friend_search.php",
     {
       query: value,
       userLoggedIn: user,

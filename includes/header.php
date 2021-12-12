@@ -23,6 +23,7 @@ else {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
     <script src="./assets/js/bootstrap.js"></script>
+    <script src="./assets/js/assets.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./assets/js/jcrop_bits.js"></script>
     <script src="./assets/js/jquery.jcrop.js"></script>
